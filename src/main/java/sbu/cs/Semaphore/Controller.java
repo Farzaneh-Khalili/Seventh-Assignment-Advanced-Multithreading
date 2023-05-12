@@ -1,5 +1,7 @@
 package sbu.cs.Semaphore;
 
+import java.util.concurrent.Semaphore;
+
 public class Controller {
 
     /**
@@ -17,17 +19,31 @@ public class Controller {
      * Every time a thread accesses the resource, print its name and the system time.
      */
 
-    public static void main(String[] args) {
-        Operator operator1 = new Operator("operator1");
-        Operator operator2 = new Operator("operator2");
-        Operator operator3 = new Operator("operator3");
-        Operator operator4 = new Operator("operator4");
-        Operator operator5 = new Operator("operator5");
+
+
+    public static void main(String[] args) throws InterruptedException {
+
+        // One single Semaphore which will be shared between all 5 threads.
+        // boolean true will ensure that waiting threads will get the permit in the order in they requested access
+        Semaphore sem = new Semaphore(2, true);
+
+        // threads with the semaphore object
+        Operator operator1 = new Operator(sem, "operator1");
+        Operator operator2 = new Operator(sem, "operator2");
+        Operator operator3 = new Operator(sem, "operator3");
+        Operator operator4 = new Operator(sem, "operator4");
+        Operator operator5 = new Operator(sem, "operator5");
 
         operator1.start();
         operator2.start();
         operator3.start();
         operator4.start();
         operator5.start();
+
+        operator1.join();
+        operator2.join();
+        operator3.join();
+        operator4.join();
+        operator5.join();
     }
 }
