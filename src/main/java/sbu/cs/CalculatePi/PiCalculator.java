@@ -23,7 +23,7 @@ public class PiCalculator {
      */
 
     public static final int max = 10_000;
-    public static final int step = 1_000_000;
+    public static final int step = 10_000_000;
     public static int threadCount = 5;
     public static int current = 0;
     public static BigDecimal[] numbers = new BigDecimal[max];

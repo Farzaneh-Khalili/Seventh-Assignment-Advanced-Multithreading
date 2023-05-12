@@ -23,7 +23,7 @@ public class Operator extends Thread {
             // thread acquiring the lock
             sem.acquire();
             LocalTime time = LocalTime.now();
-            System.out.println(getName() + " gets a permit at " + time.format(formatter));
+
 
             for (int i = 0; i < 10; i++)
             {
@@ -35,6 +35,7 @@ public class Operator extends Thread {
                     e.printStackTrace();
                 }
             }
+            System.out.println(getName() + " gets a permit at " + time.format(formatter));
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

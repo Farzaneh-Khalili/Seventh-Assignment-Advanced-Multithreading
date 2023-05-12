@@ -29,3 +29,5 @@
 - when we use a semaphore with value of number 2 it means that only maximum of 2 threads can have access to the source at same time and other threads should wait for them to leave and release the permit and then they can have the source.
 - I also add another attribute to the semaphore object : a boolean. and when I set it to true at the first place it will ensure that waiting threads are granted a permit in the order in which they requested access and will access to the source by order.
 - to show time when a thread get access and when it will release it, I made an object of *DateTimeFormatter* class with the format of ("HH:mm:ss") and also an object of *LocalTime* class.
+- I had problem showing the "release" and "get" permit because the "get permit" message would appear on the terminal before the "release message", and I fixed it by changing the line of code which was about showing the message.
+- 
